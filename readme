@@ -1,0 +1,50 @@
+Channels configuration
+
++ pip install channels channels_redis
+
+Configure it
+add channels in INSTALLED_APP in setting.py
+
+Go to project folder create a new file called routing.py
+
+Add ASGI_APPLICATION = "notes_project.routing.application" in settings.py
+
+breach between channels package and message brocker, in this case redis using
+
+configure new channel layer in settings.py
+CHANNEL_LAYER = {
+    'default':{
+        'BACKEND':'channels_redis.core.RedisChannellayer',
+        'CONFIG':{
+            "HOSTS":[{'127.0.0.1',6379}]
+        }
+    }
+}
+
+Install Redis from redis.io
+******************************************
+Installation
+Download, extract and compile Redis with:
+
+$ wget http://download.redis.io/releases/redis-6.0.7.tar.gz
+$ tar xzf redis-6.0.7.tar.gz
+$ cd redis-6.0.7
+$ make
+The binaries that are now compiled are available in the src directory. Run Redis with:
+
+$ src/redis-server
+You can interact with Redis using the built-in client:
+
+$ src/redis-cli
+redis> set foo bar
+OK
+redis> get foo
+"bar"
+***************************************************************
+
+for windows https://github.com/dmajkic/redis/downloads
+
+
+
+
+pip install channels-redis redis
